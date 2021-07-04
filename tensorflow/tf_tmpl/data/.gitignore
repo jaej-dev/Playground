@@ -1,0 +1,5 @@
+cifar-100-python/
+mnist-python/
+catdog/
+*.gz
+*.zip

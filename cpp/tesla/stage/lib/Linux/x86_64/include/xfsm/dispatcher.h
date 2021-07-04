@@ -1,0 +1,86 @@
+/*
+ * Title      :   dispatcher.h
+ * Author     :   Jaewoong Jang
+ * Date       :   Jun 20th 2021
+ */
+
+#pragma once
+
+#define DEBUG_XFSM_DISPATCHER false
+
+#include <xlog/xlog.h>
+#include <xfsm/queue.h>
+#include <xfsm/template_dispatcher.h>
+#include <xfsm/template_timed_dispatcher.h>
+
+namespace xfsm {
+
+class dispatcher_t {
+  queue_t *q_;
+  bool chained_;
+
+  template <typename dispatcher_t, typename msg_t, typename func_t>
+  friend class template_dispatcher_t;
+
+  void wait_and_dispatch() {
+#if DEBUG_XFSM_DISPATCHER
+    xlogv << "dispatcher_t wait_and_dispatch";
+#endif
+    for (;;) {
+      std::shared_ptr<base_message_t> msg = q_->wait_and_pop();
+      dispatch(msg);
+    }
+  }
+
+  bool dispatch(std::shared_ptr<base_message_t> const &msg) {
+#if DEBUG_XFSM_DISPATCHER
+    std::type_info const &ti = typeid(msg);
+    const char *msgname = ti.name();
+#endif
+    if (dynamic_cast<wrapped_message_t<close_queue_t> *>(msg.get())) {
+#if DEBUG_XFSM_DISPATCHER
+    xlogv << "dispatcher_t dispatch, throw close_queue_t, msg: " << msgname;
+#endif
+        throw close_queue_t();
+    }
+#if DEBUG_XFSM_DISPATCHER
+    xlogv << "dispatcher_t dispatch msg: " << msgname;
+#endif
+    return false;
+  }
+
+ public:
+  dispatcher_t(dispatcher_t &&other) : q_(other.q_), chained_(other.chained_) {
+#if DEBUG_XFSM_DISPATCHER
+    xlogv << "dispatcher_t constructed with &&other at " << this;
+#endif
+    other.chained_ = true;
+  }
+
+  explicit dispatcher_t(queue_t *q) : q_(q), chained_(false) {
+#if DEBUG_XFSM_DISPATCHER
+    xlogv << "dispatcher_t constructed at " << this;
+#endif
+  }
+
+  template <typename msg_t, typename func_t>
+  template_dispatcher_t<dispatcher_t, msg_t, func_t> handle(func_t f) {
+#if DEBUG_XFSM_DISPATCHER
+    xlogv << "dispatcher_t handle";
+#endif
+    return template_dispatcher_t<dispatcher_t, msg_t, func_t>(
+        q_, this, std::forward<func_t>(f));
+  }
+
+  ~dispatcher_t() noexcept(false) {
+    if (!chained_) {
+      wait_and_dispatch();
+    }
+#if DEBUG_XFSM_DISPATCHER
+    xlogv << "dispatcher_t destructed at " << this;
+#endif
+  }
+};
+
+}  // namespace xfsm
+

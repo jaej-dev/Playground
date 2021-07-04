@@ -1,0 +1,76 @@
+/*
+ * Title      :   record.h
+ * Author     :   Jaewoong Jang
+ * Date       :   Jun 20th 2021
+ */
+
+#pragma once
+
+#define XLOG_DEBUG @ENABLED_XLOG_DEBUG@
+
+#include <future>
+#include <memory>
+#include <string>
+#include <sstream>
+#include <fstream>
+#include <iostream>
+#include <streambuf>
+#include <xlog/base_stream.h>
+#include <xlog/chain_of_resp.h>
+#include <xlog/time.h>
+#include <xlog/severity.h>
+
+namespace xlog
+{
+
+class record_t {
+public:
+  record_t(const xlog::severity_e severity = xlog::severity_e::none)
+      : severity_(severity), delimiter_(0) {
+    xlog::store_time(&time_);
+#if XLOG_DEBUG
+    std::cout << __func__ << ": constructed, simple" << std::endl;
+#endif
+  }
+
+  record_t(std::function<const char *()> header,
+           const xlog::severity_e severity = xlog::severity_e::none)
+      : severity_(severity) {
+    stream_ << header() << ";";
+    delimiter_ = stream_.tellp();
+#if XLOG_DEBUG
+    std::cout << __func__ << ": constructed, header" << std::endl;
+#endif
+  }
+
+  virtual ~record_t() {
+#if XLOG_DEBUG
+    std::cout << __func__ << ": destructed" << std::endl;
+#endif
+  }
+
+  template <typename t_t> record_t &operator<<(const t_t &data) {
+    stream_ << data;
+    return *this;
+  }
+
+  xlog::severity_e get_severity() const { return severity_; }
+
+  virtual const xlog::xtime_t &get_time() const { return time_; }
+
+  virtual const std::stringstream &get_stream() const { return stream_; }
+
+  std::streampos delimit() { return delimiter_ = stream_.tellp(); }
+
+  const std::string get_message() const {
+    return stream_.str().substr(delimiter_);
+  }
+
+protected:
+  xlog::severity_e severity_;
+  xlog::xtime_t time_;
+  std::streampos delimiter_;
+  std::stringstream stream_;
+};
+
+} // namespace xlog

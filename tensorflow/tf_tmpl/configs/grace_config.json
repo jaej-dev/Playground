@@ -1,0 +1,19 @@
+{
+  "exp_name": "grace_exp_1",
+  "comet_api_key":"FtWEwkix4kpsGBrCEQXNdDARB",
+
+  "convert_gray_scale": "False",
+  "image_height": 128,
+  "image_width": 128,
+  "image_channel": 3,
+  "num_classes": 2,
+
+  "batch_size": 10,
+  "num_epochs": 60,
+  "learning_rate": 0.001,
+  "test_data_rate": 0.2,
+
+  "max_to_keep": 2,
+
+  "data_path": "/home/meere1/ws/alpha/Playground/tf_tmpl/data/catdog/"
+}

@@ -1,0 +1,54 @@
+/*
+ * Title      :   xver.h
+ * Author     :   Jaewoong Jang
+ * Date       :   Jun 20th 2021
+ */
+
+#ifndef _XVER_H_
+#define _XVER_H_
+#include <cstring>
+#include <string>
+
+#define TESLA_VERSION_MAJOR @DEF_TESLA_VERSION_MAJOR@
+#define TESLA_VERSION_MINOR @DEF_TESLA_VERSION_MINOR@
+#define TESLA_VERSION_PATCH @DEF_TESLA_VERSION_PATCH@
+#define TESLA_VERSION_GIT @DEF_TESLA_VERSION_GIT@
+#define TESLA_BUILD_DIR "@DEF_TESLA_BUILD_DIR@/"
+#define TESLA_DEVELOPER_NAME "@DEF_TESLA_DEVELOPER_NAME@"
+#define TESLA_BUILD_DATE "@DEF_TESLA_BUILD_DATE@"
+#define TESLA_VERSION_STRING "@DEF_TESLA_VERSION_STRING@"
+#define TESLA_FEATURES "@DEF_TESLA_FEATURES@;"
+
+class xver_t {
+ public:
+  static int32_t major_version() { return TESLA_VERSION_MAJOR; }
+
+  static int32_t minor_version() { return TESLA_VERSION_MINOR; }
+
+  static int32_t patch_version() { return TESLA_VERSION_PATCH; }
+
+  static std::string version() { return std::string(TESLA_VERSION_STRING); }
+
+  static std::string build_path() { return std::string(TESLA_BUILD_DIR); }
+
+  static std::string build_date() { return std::string(TESLA_BUILD_DATE); }
+
+  static std::string build_developer() {
+    return std::string(TESLA_DEVELOPER_NAME);
+  }
+
+  static bool at_least(int32_t const major, int32_t const minor,
+                       int32_t const patch) {
+    if (major > TESLA_VERSION_MAJOR) {
+      return false;
+    } else if (minor > TESLA_VERSION_MINOR) {
+      return false;
+    } else if (patch > TESLA_VERSION_PATCH) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+};
+
+#endif // !_XVER_H_

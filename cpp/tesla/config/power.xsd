@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="tesla">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="power_status">
+          <xs:complexType>
+            <xs:attribute name="power_off_reason" type="xs:unsignedInt" use="required" />
+            <xs:attribute name="power_off_reason_string" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="run_status">
+          <xs:complexType>
+            <xs:attribute name="total_run_cycle" type="xs:unsignedInt" use="required" />
+            <xs:attribute name="total_run_time_ms" type="xs:unsignedInt" use="required" />
+            <xs:attribute name="last_run_time_ms" type="xs:unsignedInt" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="error_status">
+          <xs:complexType>
+            <xs:attribute name="last_error" type="xs:unsignedInt" use="required" />
+            <xs:attribute name="last_error_string" type="xs:string" use="required" />
+            <xs:attribute name="recovery_flag" type="xs:unsignedInt" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

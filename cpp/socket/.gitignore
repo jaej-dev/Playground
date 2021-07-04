@@ -1,0 +1,7 @@
+/guiclient-build
+/guiserver-build
+build
+CMakeLists.txt.user
+/bin
+/guiclient/cmake/gen_src.cmake
+/guiserver/cmake/gen_src.cmake

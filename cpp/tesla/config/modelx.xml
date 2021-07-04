@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tesla>
+	<autopilot autopilot_uuid="empty" autopilot_type="0" autopilot_timestamp_ms="0" autopilot_lifespan_ms="0" autopilot_usage="0"/>
+</tesla>
+<modelx>
+	<autopilot autopilot_usage="0" autopilot_timestamp_ms="0" autopilot_lifespan_ms="0"/>
+</modelx>

@@ -1,0 +1,7 @@
+/root/tesla/
+config/modelx.xml:/
+config/modelx.xsd:/
+config/power.xml:/
+config/power.xsd:/
+config/tesla.xml:/
+config/tesla.xsd:/

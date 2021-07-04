@@ -1,0 +1,19 @@
+{
+  "exp_name": "mnist_exp_1",
+  "comet_api_key":"FtWEwkix4kpsGBrCEQXNdDARB",
+
+  "image_height": 28,
+  "image_width": 28,
+  "num_classes": 10,
+
+  "batch_size": 100,
+  "num_epochs": 100,
+  "learning_rate": 0.001,
+
+  "max_to_keep": 2,
+
+  "data_loader": "MnistLoader",
+  "data_dl_path": "/home/meere1/ws/alpha/Playground/tf_tmpl/data/",
+  "data_pkl_path": "/home/meere1/ws/alpha/Playground/tf_tmpl/data/mnist-python/",
+  "data_pkl": "/home/meere1/ws/alpha/Playground/tf_tmpl/data/mnist-python/mnist.pkl"
+}

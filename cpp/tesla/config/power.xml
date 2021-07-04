@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tesla>
+	<power_status power_off_reason="0" power_off_reason_string="normal"/>
+	<run_status total_run_cycle="0" total_run_time_ms="0" last_run_time_ms="0"/>
+	<error_status last_error="0" last_error_string="factory_reset" recovery_flag="0"/>
+</tesla>
+<modelx>
+	<run_status total_run_cycle="0" last_run_time_ms="0" total_run_time_ms="0"/>
+	<error_status last_error="0" last_error_string="no_error"/>
+	<power_status power_off_reason="0" power_off_reason_string="none"/>
+</modelx>

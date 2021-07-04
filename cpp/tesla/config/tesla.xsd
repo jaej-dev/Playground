@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="tesla">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="product_info">
+          <xs:complexType>
+            <xs:attribute name="model_name" type="xs:string" use="required" />
+            <xs:attribute name="model_number" type="xs:unsignedInt" use="required" />
+            <xs:attribute name="model_uuid" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="software_info">
+          <xs:complexType>
+            <xs:attribute name="project_name" type="xs:string" use="required" />
+            <xs:attribute name="platform_name" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="vehicle_config">
+          <xs:complexType>
+            <xs:attribute name="manual_type" type="xs:string" use="required" />
+            <xs:attribute name="battery_validation" type="xs:boolean" use="required" />
+            <xs:attribute name="battery_usage_threshold_ms" type="xs:unsignedInt" use="required" />
+			      <xs:attribute name="battery_usage_limit" type="xs:unsignedInt" use="required" />
+            <xs:attribute name="autopilot_lifespan_threshold_ms" type="xs:unsignedInt" use="required" />
+			<xs:attribute name="autopilot_lifespan_limit_ms" type="xs:unsignedInt" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="realtime_config">
+          <xs:complexType>
+            <xs:attribute name="system_clock_us" type="xs:unsignedInt" use="required" />
+            <xs:attribute name="algorithm_period_us" type="xs:unsignedInt" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

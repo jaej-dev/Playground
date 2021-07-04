@@ -1,0 +1,17 @@
+/*
+ * Title      :   arch_config.h
+ * Author     :   Jaewoong Jang
+ * Date       :   Jun 20th 2021
+ */
+
+#ifndef _ARCH_CONFIG_H_
+#define _ARCH_CONFIG_H_
+
+#cmakedefine ARCH_DARWIN
+#cmakedefine ARCH_LINUX
+#cmakedefine ARCH_QNX
+
+#cmakedefine PROC_X86_64
+#cmakedefine PROC_X86
+
+#endif

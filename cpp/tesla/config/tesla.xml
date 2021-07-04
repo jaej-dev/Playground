@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<tesla>
+	<product_info
+		model_name = "x"
+		model_number = "1"
+		model_uuid = ""
+		/>
+	<software_info
+		project_name = "tesla"
+		platform_name = "modelx"
+		/>
+	<vehicle_config
+		manual_type = "five"
+		battery_validation = "true"
+		battery_usage_threshold_ms = "60000"
+		battery_usage_limit = "10"
+		autopilot_lifespan_threshold_ms = "10800000"
+		autopilot_lifespan_limit_ms = "108000000"
+		/>
+	<realtime_config
+		system_clock_us = "100"
+		algorithm_period_us = "5000"
+		/>
+</tesla>

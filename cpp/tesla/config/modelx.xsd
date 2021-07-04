@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="modelx">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="autopilot">
+          <xs:complexType>
+            <xs:attribute name="autopilot_uuid" type="xs:string" use="required" />
+            <xs:attribute name="autopilot_type" type="xs:unsignedInt" use="required" />
+            <xs:attribute name="autopilot_timestamp_ms" type="xs:unsigneLong" use="required" />
+            <xs:attribute name="autopilot_lifespan_ms" type="xs:unsignedInt" use="required" />
+            <xs:attribute name="autopilot_usage" type="xs:unsignedInt" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

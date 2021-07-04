@@ -1,0 +1,29 @@
+meere1@meere1-dev  ~/ws/alpha/Playground/tf_tmpl/mains   master ●  python3 mnist_main.py --config ../configs/mnist_config.json
+start... mnist_main.py
+Already exist /home/meere1/ws/alpha/Playground/tf_tmpl/data/train-images-idx3-ubyte.gz...
+Already exist /home/meere1/ws/alpha/Playground/tf_tmpl/data/t10k-images-idx3-ubyte.gz...
+Already exist /home/meere1/ws/alpha/Playground/tf_tmpl/data/train-labels-idx1-ubyte.gz...
+Already exist /home/meere1/ws/alpha/Playground/tf_tmpl/data/t10k-labels-idx1-ubyte.gz...
+Download complete.
+Already exist /home/meere1/ws/alpha/Playground/tf_tmpl/data/mnist-python/mnist.pkl...
+x_train: (60000, 784) uint8
+y_train: (60000,) uint8
+x_test: (10000, 784) uint8
+y_test: (10000,) uint8
+Data loaded successfully..
+X_batch shape dtype:  (?, 784)
+Y_batch shape dtype:  (?,)
+Loading model checkpoint ../experiments/mnist_exp_1/checkpoint/-61800 ...
+
+Model loaded
+Traning started. It takes sometime...
+Epoch-100: 100%|██████████████████████████████████████████████████████████████████| 600/600 [04:03<00:00,  2.46it/s]
+Saving model...
+Model saved
+loss:0.0024 -- acc:0.9992
+Validation-100: 100%|█████████████████████████████████████████████████████████████| 100/100 [00:11<00:00,  9.03it/s]
+loss:0.0236 -- acc:0.9956
+
+Traning finished!!
+exit... mnist_main.py
+

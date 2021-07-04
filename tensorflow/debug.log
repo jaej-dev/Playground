@@ -1,0 +1,29 @@
+14:55:47 (lmgrd) -----------------------------------------------
+14:55:47 (lmgrd)   Please Note:
+14:55:47 (lmgrd) 
+14:55:47 (lmgrd)   This log is intended for debug purposes only.
+14:55:47 (lmgrd)   In order to capture accurate license
+14:55:47 (lmgrd)   usage data into an organized repository,
+14:55:47 (lmgrd)   please enable report logging. Use Macrovision's
+14:55:47 (lmgrd)   software license administration  solution,
+14:55:47 (lmgrd)   FLEXnet Manager, to  readily gain visibility
+14:55:47 (lmgrd)   into license usage data and to create
+14:55:47 (lmgrd)   insightful reports on critical information like
+14:55:47 (lmgrd)   license availability and usage. FLEXnet Manager
+14:55:47 (lmgrd)   can be fully automated to run these reports on
+14:55:47 (lmgrd)   schedule and can be used to track license
+14:55:47 (lmgrd)   servers and usage across a heterogeneous
+14:55:47 (lmgrd)   network of servers including Windows NT, Linux
+14:55:47 (lmgrd)   and UNIX. Contact Macrovision at
+14:55:47 (lmgrd)   www.macrovision.com for more details on how to
+14:55:47 (lmgrd)   obtain an evaluation copy of FLEXnet Manager
+14:55:47 (lmgrd)   for your enterprise.
+14:55:47 (lmgrd) 
+14:55:47 (lmgrd) -----------------------------------------------
+14:55:47 (lmgrd) 
+14:55:47 (lmgrd) 
+14:55:47 (lmgrd) Can't make directory /usr/tmp/.flexlm, errno: 2(No such file or directory)
+14:55:47 (lmgrd) Can't make directory /usr/tmp/.flexlm, errno: 2(No such file or directory)
+14:55:47 (lmgrd) Can't open /usr/tmp/.flexlm/lmgrdl.5086, errno: 2
+14:55:47 (lmgrd) Failed to open the TCP port number in the license.
+14:55:47 (lmgrd) Can't remove statfile /usr/tmp/.flexlm/lmgrdl.5086: errno No such file or directory
