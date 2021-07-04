@@ -4,7 +4,7 @@
 #include <errno.h>
 #include "masterGuiMsg.h"
 #include "guimessageclient.h"
-#include "util.h"
+#include "crc.h"
 #include <stdio.h>
 #include <termios.h>
 #include <unistd.h>

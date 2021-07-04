@@ -1,6 +1,6 @@
 #include "guimessageclient.h"
 #include <msgpack.hpp>
-#include "util.h"
+#include "crc.h"
 #include <errno.h>
 #include <iostream>
 #include <stdint.h>
