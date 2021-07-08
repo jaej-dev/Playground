@@ -6,7 +6,7 @@
 
 #pragma once
 
-#define DEBUG_XFSM_TIMER_FSM false
+#define DEBUG_XFSM_TIMER_FSM true
 
 #include <memory>
 #include <thread>
@@ -164,6 +164,9 @@ class timer_fsm_t : public state_machine_t<timer_fsm_t> {
       }
     }
 #else
+#if DEBUG_XFSM_TIMER_FSM
+      xlogf << "period: " << period.count();
+#endif
     std::this_thread::sleep_for(std::chrono::microseconds(period));
 #endif
   }
@@ -182,7 +185,7 @@ class timer_fsm_t : public state_machine_t<timer_fsm_t> {
 
     if (run) {
 #if DEBUG_XFSM_TIMER_FSM
-      xlogv << "call simulate";
+      xlogn << "call simulate";
 #endif
       simulate();
     } else {

@@ -182,7 +182,7 @@ class timer_fsm_t : public state_machine_t<timer_fsm_t> {
 
     if (run) {
 #if DEBUG_XFSM_TIMER_FSM
-      xlogv << "call simulate";
+      xlogn << "call simulate";
 #endif
       simulate();
     } else {
