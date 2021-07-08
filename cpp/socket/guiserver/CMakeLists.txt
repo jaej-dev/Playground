@@ -6,6 +6,11 @@ cmake_minimum_required (VERSION 3.6.3)
 
 project(guiserver)
 
+enable_language(C)
+enable_language(CXX)
+set(CMAKE_CXX_STANDARD 11) 
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 set (MODULE_PATH
     "${CMAKE_SOURCE_DIR}/cmake"
     )
@@ -18,7 +23,7 @@ execute_process (
 
 include (${MODULE_PATH}/gen_src.cmake)
 
-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11 -g")
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -g")
 
 include_directories (
     ${GEN_INCLUDES}
