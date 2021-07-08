@@ -1,6 +1,7 @@
 #!/bin/sh
 
 echo "Start to create tags file..."
+rm cscope.out
 rm cscope.files
 rm tags
 
