@@ -254,4 +254,13 @@ $ sudo apt-get install g++-multilib libc6-dev-i386
 * export CFLAGS='-m32'
 
 
-14. 
+14. poco library 
+$ sudo apt-get install openssl libssl-dev
+$ git clone -b master https://github.com/pocoproject/poco.git
+$ cd poco
+$ mkdir cmake-build
+$ cd cmake-build
+$ cmake -DCMAKE_INSTALL_PREFIX=~/x/poco/cmake_build/stage -DBUILD_SHARED_LIBS=NO .. && cmake --build .
+$ cmake install
+$ ls stage/include/Poco
+
