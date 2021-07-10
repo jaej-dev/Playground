@@ -1,14 +1,14 @@
-#include <iostream>
-#include <chrono>
-#include <thread>
-#include <errno.h>
-#include "masterGuiMsg.h"
-#include "guimessageclient.h"
 #include "crc.h"
+#include "guimessageclient.h"
+#include "masterGuiMsg.h"
+#include <chrono>
+#include <errno.h>
+#include <fcntl.h>
+#include <iostream>
 #include <stdio.h>
 #include <termios.h>
+#include <thread>
 #include <unistd.h>
-#include <fcntl.h>
 
 using namespace std;
 using namespace master_gui_protocol;
@@ -40,24 +40,20 @@ GUIMessageClientResult testSetSpeakerVolume() {
   return result;
 }
 
-GUIMessageClientResult testShowMessage(MessageCategory::Enum category)
-{
-    MessageData data;
-    data.setCategory(category);
-    data.setLevel(MessageLevel::Info);
-//    data.setDurationMs(2000);
-    data.setMessage("Test syste message");
-    GUIMessageClientResult result = controller.showMessage(data);
-    if (result.isOK())
-    {
-        cout << "testShowSystemMessage" << endl;
-    }
-    else
-    {
-        cout << "Error: " << result << endl;
-    }
+GUIMessageClientResult testShowMessage(MessageCategory::Enum category) {
+  MessageData data;
+  data.setCategory(category);
+  data.setLevel(MessageLevel::Info);
+  //    data.setDurationMs(2000);
+  data.setMessage("Test syste message");
+  GUIMessageClientResult result = controller.showMessage(data);
+  if (result.isOK()) {
+    cout << "testShowSystemMessage" << endl;
+  } else {
+    cout << "Error: " << result << endl;
+  }
 
-    return result;
+  return result;
 }
 GUIMessageClientResult testHideMessage(MessageCategory::Enum category) {
   MessageData data;

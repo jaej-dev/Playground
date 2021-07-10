@@ -34,7 +34,6 @@ public:
   static int listen(int s);
   static int accept(int s, struct sockaddr *addr, socklen_t *addrlen);
   static int connect(int s, struct sockaddr_in *sockaddr);
-  // if connectnb goes wrong, 's' is closed (close()).
   static int connectnb(int s, struct sockaddr_in *sockaddr, int msec);
   static void close(int s);
   static bool messageTimedWait(int s, int usec);
