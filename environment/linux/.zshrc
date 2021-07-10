@@ -82,7 +82,8 @@ plugins=(
 	git
 	zsh-syntax-highlighting
  	zsh-autosuggestions
-
+  fzf
+  fasd
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -117,6 +118,17 @@ source $ZSH/oh-my-zsh.sh
 #autoload -U promptinit; promptinit
 #prompt pure
 
+# fasd
+alias a='fasd -a'        # any
+alias s='fasd -si'       # show / search / select
+alias d='fasd -d'        # directory
+alias f='fasd -f'        # file
+alias sd='fasd -sid'     # interactive directory selection
+alias sf='fasd -sif'     # interactive file selection
+alias z='fasd_cd -d'     # cd, same functionality as j in autojump
+alias zz='fasd_cd -d -i' # cd with interactive selection
+
+# vim
 alias vim="nvim"
 alias vi="nvim"
 alias vimdiff="nvim -d"

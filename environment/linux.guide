@@ -31,11 +31,10 @@ $ sudo apt install fcitx-hangul
 $ sudo apt install zsh
 $ chsh -s /usr/bin/zsh
 $ wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O - | sh
-
 $ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-
 $ git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
-
+$ sudo apt-get install fzf
+$ sudo apt-get install fasd
 
 4. prompt
 4.1. pure
@@ -94,6 +93,7 @@ plugins=(
   git
   zsh-syntax-highlighting
   zsh-autosuggestions
+  fzf
 )
 # pure prompt
 #fpath+=$HOME/.zsh/pure
