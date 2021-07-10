@@ -248,3 +248,10 @@ $ valgrind --leak-check=full --trace-children=yes --show-leak-kinds=all --track-
 12.2. normal
 valgrind --leak-check=full --trace-children=yes --show-leak-kinds=all --track-origins=yes --verbose --log-file=valgrind-out.txt ./binary_name
 
+
+13. Compile 32bit apps on 64bit architecure
+$ sudo apt-get install g++-multilib libc6-dev-i386
+* export CFLAGS='-m32'
+
+
+14. 
