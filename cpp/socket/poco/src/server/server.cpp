@@ -6,6 +6,7 @@
 #include <string>
 #include <thread>
 #include <Poco/Logger.h>
+#include <Poco/ConsoleChannel.h>
 #include <Poco/SplitterChannel.h>
 #include <Poco/FormattingChannel.h>
 #include <Poco/PatternFormatter.h>
@@ -18,12 +19,6 @@ using Poco::Logger;
 
 int main(int argc, char** argv) {
   // create log instance
-#if 0
-  AutoPtr<ConsoleChannel> pCons(new ConsoleChannel);
-  Logger::root().setChannel(pCons);
-  Logger& logger = Logger::get("server_logger");
-  logger.information("start server program...");
-#else
   AutoPtr<SplitterChannel> splitterChannel(new SplitterChannel());
   AutoPtr<Channel> consoleChannel(new ConsoleChannel());
   splitterChannel->addChannel(consoleChannel);
@@ -31,7 +26,6 @@ int main(int argc, char** argv) {
   AutoPtr<Channel> formattingChannel(new FormattingChannel(formatter, splitterChannel));
   Logger& logger = Logger::create("server_logger", formattingChannel, Message::PRIO_TRACE);
   logger.information("start server program...");
-#endif
 
   // create server instance
   uint16_t port = 1976;

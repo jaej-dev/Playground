@@ -5,14 +5,11 @@
 #include <iostream>
 #include <cstring>
 #include <sstream>
-#include <Poco/AutoPtr.h>
-#include <Poco/ConsoleChannel.h>
 #include <Poco/Logger.h>
 #include <Poco/Net/DatagramSocket.h>
 #include <Poco/Net/SocketAddress.h>
 #include <Poco/Thread.h>
 #include <Poco/RunnableAdapter.h>
-#include <Poco/Logger.h>
 
 using Poco::Logger;
 using namespace Poco;

@@ -6,6 +6,11 @@
 #include <string>
 #include <thread>
 #include <Poco/Logger.h>
+#include <Poco/ConsoleChannel.h>
+#include <Poco/SplitterChannel.h>
+#include <Poco/FormattingChannel.h>
+#include <Poco/PatternFormatter.h>
+#include <Poco/DateTime.h>
 #include "client.h"
 
 using Poco::AutoPtr;
@@ -14,9 +19,12 @@ using Poco::Logger;
 
 int main(int argc, char** argv) {
   // create log instance
-  AutoPtr<ConsoleChannel> pCons(new ConsoleChannel);
-  Logger::root().setChannel(pCons);
-  Logger& logger = Logger::get("client_logger");
+  AutoPtr<SplitterChannel> splitterChannel(new SplitterChannel());
+  AutoPtr<Channel> consoleChannel(new ConsoleChannel());
+  splitterChannel->addChannel(consoleChannel);
+  AutoPtr<Formatter> formatter(new PatternFormatter("%d-%m-%Y %H:%M:%S %s: %t"));
+  AutoPtr<Channel> formattingChannel(new FormattingChannel(formatter, splitterChannel));
+  Logger& logger = Logger::create("client_logger", formattingChannel, Message::PRIO_TRACE);
   logger.information("start client program...");
 
   // create client instance
