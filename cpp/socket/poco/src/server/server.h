@@ -22,7 +22,7 @@ class server_t {
     this->buffer_size_ = bufferSize;
   }
 
-  server_t() : buffer_size_(1024) { socket_ = SocketAddress(10000); }
+  server_t() : buffer_size_(1024) { socket_ = SocketAddress(1976); }
 
   ~server_t() {}
 
