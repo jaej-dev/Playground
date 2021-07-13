@@ -264,3 +264,15 @@ $ cd cmake-build
 $ cmake .. && cmake --build .
 $ sudo cmake --build . --target install
 $ ls /usr/local
+
+15. boost library
+$ wget https://boostorg.jfrog.io/artifactory/main/release/1.76.0/source/boost_1_76_0.tar.gz
+$ tar xvfz boost_1_76_0.tar.gz
+$ cd boost_1_76_0
+$ ./bootstrap.sh
+for 32bit
+$ ./b2 toolset=gcc link=static threading=multi address-model=32 runtime-link=static variant=debug --with-system --with-date_time --with-headers --with-iostreams
+for 64bit
+$ ./b2 toolset=gcc link=static threading=multi address-model=64 runtime-link=static variant=debug --with-system --with-date_time --with-headers --with-iostreams
+$ ls stage/lib
+
