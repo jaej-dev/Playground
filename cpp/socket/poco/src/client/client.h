@@ -33,13 +33,20 @@ class client_t {
     std::string message;
 
     logger_.information("start client instance");
-    while (!datagram.available()) {
-      message = "packet-" + std::to_string(++tick_) + ": test packet";
-      datagram.sendBytes(message.data(), int32_t(message.size()));
-      if (message == "\\comm_exit") {
-        datagram.close();
+    while (true) {
+      try {
+        if (!datagram.available()) {
+          message = "packet-" + std::to_string(++tick_) + ": test packet";
+          datagram.sendBytes(message.data(), int32_t(message.size()));
+          logger_.information("send pecket: %s", message);
+          if (message == "\\comm_exit") {
+            datagram.close();
+          }
+          std::this_thread::sleep_for(std::chrono::microseconds(500000));
+        }
+      } catch (...) {
+        std::cerr << "raised exception" << std::endl;
       }
-      std::this_thread::sleep_for(std::chrono::microseconds(1000));
     }
     logger_.information("exit client instance");
   }

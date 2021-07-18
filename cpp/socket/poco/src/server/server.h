@@ -31,16 +31,25 @@ class server_t {
     char buffer[buffer_size_];
 
     logger_.information("start server instance");
-    while (!datagram.available()) {
-      SocketAddress sender;
-      int32_t size = datagram.receiveFrom(buffer, buffer_size_, sender);
-      buffer[size] = '\0';
-      logger_.information(buffer);
+    while (true) {
+      try {
+        if (!datagram.available()) {
+          SocketAddress sender;
+          int32_t size = datagram.receiveFrom(buffer, buffer_size_, sender);
+          buffer[size] = '\0';
+          logger_.information("received packet: %s", std::string(buffer));
 
-      if (std::string(buffer) == "\\comm_exit") {
-        logger_.information("sender: %s, ended connection", sender.toString());
-        datagram.close();
-        gen_signal_term();
+          if (std::string(buffer) == "\\comm_exit") {
+            logger_.information("sender: %s, ended connection",
+                                sender.toString());
+            datagram.close();
+            gen_signal_term();
+          }
+        } else {
+          std::this_thread::sleep_for(std::chrono::microseconds(500000));
+        }
+      } catch (...) {
+        std::cerr << "raised exception" << std::endl;
       }
     }
     logger_.information("exit server instance");
@@ -51,7 +60,6 @@ class server_t {
     ss << "kill -TERM " << getpid();
     return system(ss.str().c_str());
   }
-
 
  private:
   int32_t buffer_size_;
